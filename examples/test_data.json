@@ -1,0 +1,173 @@
+{
+  "test_products": [
+    {
+      "name": "iPhone 13",
+      "product_url": "https://www.amazon.com/dp/B09G9FPHY6",
+      "affiliate_link": "https://amzn.to/3xyz123",
+      "category": "electronics",
+      "expected_keywords": ["iPhone", "Apple", "smartphone", "móvil"],
+      "notes": "Producto popular para testing inicial"
+    },
+    {
+      "name": "Echo Dot",
+      "product_url": "https://www.amazon.com/dp/B07FZ8S74R",
+      "affiliate_link": "https://amzn.to/3abc456",
+      "category": "electronics",
+      "expected_keywords": ["Alexa", "Echo", "smart speaker", "Amazon"],
+      "notes": "Producto Amazon para testing de marca propia"
+    },
+    {
+      "name": "Instant Pot",
+      "product_url": "https://www.amazon.com/dp/B00FLYWNYQ",
+      "affiliate_link": "https://amzn.to/3def789",
+      "category": "home",
+      "expected_keywords": ["cocina", "olla", "presión", "Instant Pot"],
+      "notes": "Producto de hogar para testing de categoría diferente"
+    },
+    {
+      "name": "Kindle Paperwhite",
+      "product_url": "https://www.amazon.com/dp/B08KTZ8249",
+      "affiliate_link": "https://amzn.to/3ghi012",
+      "category": "books",
+      "expected_keywords": ["Kindle", "ebook", "lectura", "Amazon"],
+      "notes": "Producto de lectura para testing de nicho específico"
+    },
+    {
+      "name": "Nike Air Max",
+      "product_url": "https://www.amazon.com/dp/B08XXXXX",
+      "affiliate_link": "https://amzn.to/3jkl345",
+      "category": "fashion",
+      "expected_keywords": ["Nike", "zapatillas", "deportivo", "Air Max"],
+      "notes": "Producto de moda/deportes para testing de variedad"
+    }
+  ],
+  "test_scenarios": [
+    {
+      "scenario": "happy_path",
+      "description": "Flujo normal sin errores",
+      "input": {
+        "product_url": "https://www.amazon.com/dp/B09G9FPHY6",
+        "affiliate_link": "https://amzn.to/3xyz123"
+      },
+      "expected_output": {
+        "success": true,
+        "article_generated": true,
+        "wordpress_published": true,
+        "sheets_updated": true
+      }
+    },
+    {
+      "scenario": "invalid_product_url",
+      "description": "URL de producto inválida",
+      "input": {
+        "product_url": "https://www.example.com/invalid",
+        "affiliate_link": "https://amzn.to/3xyz123"
+      },
+      "expected_output": {
+        "success": false,
+        "error": "URL de Amazon inválida"
+      }
+    },
+    {
+      "scenario": "invalid_affiliate_link",
+      "description": "Enlace de afiliado inválido",
+      "input": {
+        "product_url": "https://www.amazon.com/dp/B09G9FPHY6",
+        "affiliate_link": "https://www.example.com/invalid"
+      },
+      "expected_output": {
+        "success": false,
+        "error": "Enlace de afiliado inválido"
+      }
+    },
+    {
+      "scenario": "api_rate_limit",
+      "description": "Límite de API alcanzado",
+      "input": {
+        "product_url": "https://www.amazon.com/dp/B09G9FPHY6",
+        "affiliate_link": "https://amzn.to/3xyz123"
+      },
+      "expected_output": {
+        "success": false,
+        "error": "Rate limit exceeded",
+        "fallback_used": true
+      }
+    }
+  ],
+  "curl_examples": [
+    {
+      "name": "Test Free Article Generation",
+      "description": "Probar generación de artículo gratuito",
+      "command": "curl -X POST 'https://tu-proyecto.vercel.app/api/generate-article-free' -H 'Content-Type: application/json' -d '{\"product_url\": \"https://www.amazon.com/dp/B09G9FPHY6\", \"affiliate_link\": \"https://amzn.to/3xyz123\"}'"
+    },
+    {
+      "name": "Test Health Check",
+      "description": "Verificar estado del servicio",
+      "command": "curl https://tu-proyecto.vercel.app/api/health"
+    },
+    {
+      "name": "Test Webhook",
+      "description": "Probar webhook de Make.com",
+      "command": "curl -X POST 'https://tu-proyecto.vercel.app/api/webhook' -H 'Content-Type: application/json' -d '{\"event_type\": \"process_article\", \"product_url\": \"https://www.amazon.com/dp/B09G9FPHY6\", \"affiliate_link\": \"https://amzn.to/3xyz123\", \"row_number\": 2}'"
+    }
+  ],
+  "google_sheets_examples": [
+    {
+      "row": 2,
+      "data": {
+        "A": "2025-01-15 14:30:00",
+        "B": "https://www.amazon.com/dp/B09G9FPHY6",
+        "C": "https://amzn.to/3xyz123",
+        "D": "Pendiente",
+        "E": "",
+        "F": "",
+        "G": "",
+        "H": "",
+        "I": "",
+        "J": ""
+      },
+      "description": "Ejemplo de entrada inicial en Google Sheets"
+    },
+    {
+      "row": 2,
+      "data": {
+        "A": "2025-01-15 14:30:00",
+        "B": "https://www.amazon.com/dp/B09G9FPHY6",
+        "C": "https://amzn.to/3xyz123",
+        "D": "Completado",
+        "E": "iPhone 13: Análisis Completo y Mejor Precio",
+        "F": "https://tudominio.wordpress.com/iphone-13-analisis",
+        "G": "Artículo generado y publicado exitosamente",
+        "H": "Apple iPhone 13 (128GB, Blue)",
+        "I": "$699.00",
+        "J": "4.5 de 5"
+      },
+      "description": "Ejemplo de fila completada en Google Sheets"
+    }
+  ],
+  "troubleshooting": {
+    "common_errors": [
+      {
+        "error": "CORS error",
+        "solution": "Verificar configuración de headers en Vercel",
+        "code": "Access-Control-Allow-Origin: *"
+      },
+      {
+        "error": "Timeout en Make.com",
+        "solution": "Aumentar timeout en configuración de módulo HTTP",
+        "setting": "timeout: 300 segundos"
+      },
+      {
+        "error": "Google Sheets permission denied",
+        "solution": "Verificar permisos de la conexión en Make.com",
+        "scopes": "https://www.googleapis.com/auth/spreadsheets"
+      },
+      {
+        "error": "WordPress authentication failed",
+        "solution": "Regenerar Application Password en WordPress",
+        "path": "Users > Profile > Application Passwords"
+      }
+    ]
+  }
+}
+

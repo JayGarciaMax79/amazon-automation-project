@@ -1,0 +1,81 @@
+{
+  "version": 2,
+  "name": "amazon-automation-project",
+  "builds": [
+    {
+      "src": "api/*.py",
+      "use": "@vercel/python",
+      "config": {
+        "maxLambdaSize": "50mb"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/generate-article",
+      "dest": "/api/generate-article.py"
+    },
+    {
+      "src": "/api/scrape-amazon",
+      "dest": "/api/scrape-amazon.py"
+    },
+    {
+      "src": "/api/webhook",
+      "dest": "/api/webhook.py"
+    },
+    {
+      "src": "/api/health",
+      "dest": "/api/health.py"
+    },
+    {
+      "src": "/api/docs",
+      "dest": "/api/docs.py"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/api/index.py"
+    }
+  ],
+  "env": {
+    "OPENAI_API_KEY": "@openai_api_key",
+    "OPENAI_API_BASE": "@openai_api_base",
+    "GOOGLE_SHEETS_API_KEY": "@google_sheets_api_key",
+    "GOOGLE_SERVICE_ACCOUNT_EMAIL": "@google_service_account_email",
+    "WORDPRESS_API_URL": "@wordpress_api_url",
+    "WORDPRESS_USERNAME": "@wordpress_username",
+    "WORDPRESS_PASSWORD": "@wordpress_password",
+    "MAKE_WEBHOOK_URL": "@make_webhook_url"
+  },
+  "functions": {
+    "api/*.py": {
+      "runtime": "python3.11",
+      "maxDuration": 300
+    }
+  },
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "GET, POST, PUT, DELETE, OPTIONS"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "Content-Type, Authorization"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/docs",
+      "destination": "https://amazon-automation-docs.vercel.app"
+    }
+  ]
+}
+

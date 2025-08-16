@@ -1,0 +1,225 @@
+{
+  "name": "Amazon Article Automation - FREE",
+  "description": "Automatización completa para generar artículos de productos Amazon usando APIs gratuitas",
+  "version": "1.0.0",
+  "flow": [
+    {
+      "id": 1,
+      "module": "webhook:customWebhook",
+      "version": 1,
+      "parameters": {
+        "hook": "amazon_trigger"
+      },
+      "mapper": {},
+      "metadata": {
+        "designer": {
+          "x": 0,
+          "y": 0
+        },
+        "restore": {
+          "parameters": {
+            "hook": {
+              "label": "Amazon Trigger Webhook"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 2,
+      "module": "google-sheets:updateRow",
+      "version": 1,
+      "parameters": {
+        "connection": "google_sheets_connection",
+        "mode": "select",
+        "spreadsheetId": "{{1.sheet_id}}",
+        "sheetName": "Amazon_Products",
+        "row": "{{1.row_number}}",
+        "values": {
+          "Status": "Procesando",
+          "Processing Notes": "Iniciando generación de artículo..."
+        }
+      },
+      "mapper": {},
+      "metadata": {
+        "designer": {
+          "x": 300,
+          "y": 0
+        },
+        "restore": {
+          "parameters": {
+            "connection": {
+              "label": "Google Sheets Connection"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 3,
+      "module": "http:ActionSendData",
+      "version": 3,
+      "parameters": {
+        "url": "https://tu-proyecto.vercel.app/api/generate-article-free",
+        "method": "POST",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "data": {
+          "product_url": "{{1.product_url}}",
+          "affiliate_link": "{{1.affiliate_link}}",
+          "category": "general"
+        },
+        "timeout": 300,
+        "followRedirect": true,
+        "rejectUnauthorized": true
+      },
+      "mapper": {},
+      "metadata": {
+        "designer": {
+          "x": 600,
+          "y": 0
+        },
+        "restore": {
+          "parameters": {
+            "url": {
+              "label": "Vercel Function URL"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 4,
+      "module": "wordpress:createPost",
+      "version": 1,
+      "parameters": {
+        "connection": "wordpress_connection",
+        "title": "{{3.article.title}}",
+        "content": "{{3.article.content}}",
+        "status": "publish",
+        "categories": ["Amazon", "Reviews"],
+        "excerpt": "{{3.article.meta_description}}"
+      },
+      "mapper": {},
+      "metadata": {
+        "designer": {
+          "x": 900,
+          "y": 0
+        },
+        "restore": {
+          "parameters": {
+            "connection": {
+              "label": "WordPress Connection"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 5,
+      "module": "google-sheets:updateRow",
+      "version": 1,
+      "parameters": {
+        "connection": "google_sheets_connection",
+        "mode": "select",
+        "spreadsheetId": "{{1.sheet_id}}",
+        "sheetName": "Amazon_Products",
+        "row": "{{1.row_number}}",
+        "values": {
+          "Status": "Completado",
+          "Article Title": "{{3.article.title}}",
+          "Article URL": "{{4.link}}",
+          "Processing Notes": "Artículo generado y publicado exitosamente"
+        }
+      },
+      "mapper": {},
+      "metadata": {
+        "designer": {
+          "x": 1200,
+          "y": 0
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "instant": false,
+    "version": 1,
+    "scenario": {
+      "roundtrips": 1,
+      "maxErrors": 3,
+      "autoCommit": true,
+      "autoCommitTriggerLast": true,
+      "sequential": false,
+      "confidential": false,
+      "dataloss": false,
+      "dlq": false,
+      "freshVariables": false,
+      "schedule": {
+        "type": "indefinitely"
+      }
+    },
+    "designer": {
+      "orphans": []
+    },
+    "zone": "us1.make.com"
+  },
+  "notes": [
+    {
+      "id": "note1",
+      "text": "CONFIGURACIÓN REQUERIDA:\n\n1. Actualizar URL de Vercel en módulo 3\n2. Configurar conexiones:\n   - Google Sheets\n   - WordPress\n3. Activar escenario\n\nEste blueprint genera artículos usando APIs 100% GRATUITAS",
+      "position": {
+        "x": 0,
+        "y": 200
+      }
+    }
+  ],
+  "errorHandlers": [
+    {
+      "scope": "scenario",
+      "handler": {
+        "id": 99,
+        "module": "google-sheets:updateRow",
+        "version": 1,
+        "parameters": {
+          "connection": "google_sheets_connection",
+          "mode": "select",
+          "spreadsheetId": "{{1.sheet_id}}",
+          "sheetName": "Amazon_Products",
+          "row": "{{1.row_number}}",
+          "values": {
+            "Status": "Error",
+            "Processing Notes": "Error: {{error.message}}"
+          }
+        }
+      }
+    }
+  ],
+  "instructions": {
+    "setup": [
+      "1. Importar este blueprint en Make.com",
+      "2. Configurar conexiones requeridas",
+      "3. Actualizar URL de Vercel en módulo 3",
+      "4. Probar con datos de ejemplo",
+      "5. Activar escenario"
+    ],
+    "connections": {
+      "google_sheets_connection": {
+        "type": "Google Sheets",
+        "permissions": ["read", "write"],
+        "scopes": ["https://www.googleapis.com/auth/spreadsheets"]
+      },
+      "wordpress_connection": {
+        "type": "WordPress",
+        "auth_method": "application_password",
+        "permissions": ["publish_posts", "edit_posts"]
+      }
+    },
+    "variables": {
+      "VERCEL_URL": "https://tu-proyecto.vercel.app",
+      "SHEET_ID": "ID de tu Google Sheet",
+      "WORDPRESS_URL": "https://tudominio.wordpress.com"
+    }
+  }
+}
+

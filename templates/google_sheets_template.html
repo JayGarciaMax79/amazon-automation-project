@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Amazon Products Automation - Google Sheets Template</title>
+    <style>
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #4CAF50; color: white; }
+        .pending { background-color: #fff3cd; }
+        .processing { background-color: #d1ecf1; }
+        .completed { background-color: #d4edda; }
+        .error { background-color: #f8d7da; }
+    </style>
+</head>
+<body>
+    <h1>Amazon Products Automation - Template</h1>
+    <p>Esta es la plantilla para la automatización de artículos de productos de Amazon.</p>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>A - Timestamp</th>
+                <th>B - Product URL</th>
+                <th>C - Affiliate Link</th>
+                <th>D - Status</th>
+                <th>E - Article Title</th>
+                <th>F - Article URL</th>
+                <th>G - Processing Notes</th>
+                <th>H - Product Title</th>
+                <th>I - Product Price</th>
+                <th>J - Product Rating</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>2025-01-15 14:30:00</td>
+                <td>https://www.amazon.com/dp/B08N5WRWNW</td>
+                <td>https://amzn.to/3xyz123</td>
+                <td class="completed">Completado</td>
+                <td>iPhone 13: Análisis Completo y Mejor Precio</td>
+                <td>https://myamzdeals.shop/iphone-13-analisis</td>
+                <td>Artículo generado exitosamente</td>
+                <td>Apple iPhone 13 (128GB, Blue)</td>
+                <td>$699.00</td>
+                <td>4.5 de 5</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>https://www.amazon.com/dp/EJEMPLO123</td>
+                <td>https://amzn.to/ejemplo456</td>
+                <td class="pending">Pendiente</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h2>Instrucciones de Uso</h2>
+    <ol>
+        <li>Copia esta tabla a una nueva hoja de Google Sheets</li>
+        <li>Configura las fórmulas automáticas (ver documentación)</li>
+        <li>Ingresa la URL del producto en la columna B</li>
+        <li>Ingresa el enlace de afiliado en la columna C</li>
+        <li>El sistema procesará automáticamente el resto</li>
+    </ol>
+    
+    <h2>Estados de Procesamiento</h2>
+    <ul>
+        <li><span class="pending">Pendiente</span> - Esperando procesamiento</li>
+        <li><span class="processing">Procesando</span> - En proceso de generación</li>
+        <li><span class="completed">Completado</span> - Artículo generado y publicado</li>
+        <li><span class="error">Error</span> - Error en el procesamiento</li>
+    </ul>
+</body>
+</html>
+
