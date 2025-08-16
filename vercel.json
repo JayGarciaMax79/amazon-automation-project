@@ -10,7 +10,7 @@
   "env": {
     "AIzaSyBuoXbCF0QyXQGDeMd_lUDNMSWF9y97dPo": "@openai_api_key",
     "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”: "@openai_api_base",
-    "https://docs.google.com/spreadsheets/d/1hmf3CW7yBRusVz2kr2tI4IIC4Ghi51lo57z4khg0sac/edit?usp=sharing": "@google_sheets_api_key",
+    "https://docs.google.com/spreadsheets/d/1hmf3CW7yBRusVz2kr2tI4IIC4Ghi51lo57z4khg0sac": "@google_sheets_api_key",
     "jayjayhustkemax@gmail.com": "@google_service_account_email",
     "https://myamzdeals.shop/wp-json/wp/v2/": "@wordpress_api_url",
     “arteinusual@gmail.com: "@wordpress_username",
