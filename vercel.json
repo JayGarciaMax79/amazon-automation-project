@@ -9,12 +9,12 @@
   },
   "env": {
     "AIzaSyBuoXbCF0QyXQGDeMd_lUDNMSWF9y97dPo": "@openai_api_key",
-    "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”: "@openai_api_base",
+    "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": "@openai_api_base",
     "https://docs.google.com/spreadsheets/d/1g6btZkRCw1EJUagnd2si7ewax-foCSRfvOjCqBrYArI": "@google_sheets_api_key",
     "arteinusual@gmail.com": "@google_service_account_email",
     "https://myamzdeals.shop/wp-json/wp/v2/": "@wordpress_api_url",
-    “arteinusual@gmail.com: "@wordpress_username",
-    “MaxGarcia25@: "@wordpress_password",
+    "arteinusual@gmail.com": "@wordpress_username",
+    "MaxGarcia25@": "@wordpress_password",
     "https://hook.eu2.make.com/23t7pcei5jaof95vxaa3l6dun2k3xvx1L": "@make_webhook_url"
   },
   "headers": [
@@ -67,6 +67,8 @@
     }
   ]
 }
+
+
 
 
 
