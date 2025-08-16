@@ -7,32 +7,6 @@
       "maxDuration": 300
     }
   },
-  "routes": [
-    {
-      "src": "/api/generate-article",
-      "dest": "/api/generate-article.py"
-    },
-    {
-      "src": "/api/scrape-amazon",
-      "dest": "/api/scrape-amazon.py"
-    },
-    {
-      "src": "/api/webhook",
-      "dest": "/api/webhook.py"
-    },
-    {
-      "src": "/api/health",
-      "dest": "/api/health.py"
-    },
-    {
-      "src": "/api/docs",
-      "dest": "/api/docs.py"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/api/index.py"
-    }
-  ],
   "env": {
     "OPENAI_API_KEY": "@openai_api_key",
     "OPENAI_API_BASE": "@openai_api_base",
@@ -64,10 +38,35 @@
   ],
   "rewrites": [
     {
+      "source": "/api/generate-article",
+      "destination": "/api/generate-article.py"
+    },
+    {
+      "source": "/api/scrape-amazon",
+      "destination": "/api/scrape-amazon.py"
+    },
+    {
+      "source": "/api/webhook",
+      "destination": "/api/webhook.py"
+    },
+    {
+      "source": "/api/health",
+      "destination": "/api/health.py"
+    },
+    {
+      "source": "/api/docs",
+      "destination": "/api/docs.py"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/api/index.py"
+    },
+    {
       "source": "/docs",
       "destination": "https://amazon-automation-docs.vercel.app"
     }
   ]
 }
+
 
 
