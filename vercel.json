@@ -1,21 +1,9 @@
 {
   "version": 2,
-  "name": "amazon-automation-project",
   "functions": {
     "api/*.py": {
-      "runtime": "python3.11",
       "maxDuration": 300
     }
-  },
-  "env": {
-    "OPENAI_API_KEY": "@openai_api_key",
-    "OPENAI_API_BASE": "@openai_api_base",
-    "GOOGLE_SHEETS_API_KEY": "@google_sheets_api_key",
-    "GOOGLE_SERVICE_ACCOUNT_EMAIL": "@google_service_account_email",
-    "WORDPRESS_API_URL": "@wordpress_api_url",
-    "WORDPRESS_USERNAME": "@wordpress_username",
-    "WORDPRESS_PASSWORD": "@wordpress_password",
-    "MAKE_WEBHOOK_URL": "@make_webhook_url"
   },
   "headers": [
     {
