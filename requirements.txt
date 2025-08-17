@@ -1,25 +1,12 @@
-# Core dependencies
-requests==2.32.4
-beautifulsoup4==4.13.4
 flask==3.1.0
 flask-cors==5.0.0
-
-# OpenAI and AI
+requests==2.32.4
+beautifulsoup4==4.13.4
 openai==1.58.1
-flask==3.0.3
-requests==2.31.0
-beautifulsoup4==4.12.3
-lxml==5.2.2
-openai==1.51.0
-google-auth==2.29.0
-google-auth-oauthlib==1.2.0
-google-auth-httplib2==0.2.0
-google-api-python-client==2.131.0
-gspread==6.1.2
-pandas==2.2.2
-numpy==1.26.4
-python-wordpress-xmlrpc==2.3
+google-auth==2.36.0
+google-api-python-client==2.154.0
+gspread==6.1.4
+pandas==2.2.3
 python-dotenv==1.0.1
-validators==0.28.1
-selenium==4.15.0
-urllib3==2.1.0
+python-wordpress-xmlrpc==2.3
+urllib3==2.5.0
