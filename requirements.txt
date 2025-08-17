@@ -6,49 +6,20 @@ flask-cors==5.0.0
 
 # OpenAI and AI
 openai==1.58.1
-
-# Google APIs
-google-auth==2.36.0
-google-auth-oauthlib==1.2.1
+flask==3.0.3
+requests==2.31.0
+beautifulsoup4==4.12.3
+lxml==5.2.2
+openai==1.51.0
+google-auth==2.29.0
+google-auth-oauthlib==1.2.0
 google-auth-httplib2==0.2.0
-google-api-python-client==2.154.0
-gspread==6.1.4
-
-# Data processing
-pandas==2.2.3
-numpy==2.2.1
-python-dateutil==2.9.0.post0
-
-# Web scraping
-selenium==4.27.1
-playwright==1.49.1
-
-# Utilities
-python-dotenv==1.0.1
-pydantic==2.10.3
-validators==0.34.0
-urllib3==2.5.0
-
-# WordPress integration
+google-api-python-client==2.131.0
+gspread==6.1.2
+pandas==2.2.2
+numpy==1.26.4
 python-wordpress-xmlrpc==2.3
-
-# Async support
-aiohttp==3.11.10
-asyncio-throttle==1.0.2
-
-# Logging and monitoring
-structlog==24.4.0
-sentry-sdk==2.19.2
-
-# Security
-cryptography==44.0.0
-PyJWT==2.10.1
-
-# Development dependencies (optional)
-# pytest==8.3.4
-# pytest-cov==6.0.0
-# pytest-asyncio==0.25.0
-# flake8==7.1.1
-# black==24.10.0
-# mypy==1.13.0
-
+python-dotenv==1.0.1
+validators==0.28.1
+selenium==4.15.0
+urllib3==2.1.0
