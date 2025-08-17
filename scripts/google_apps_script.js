@@ -6,7 +6,7 @@
 // Configuración global
 const CONFIG = {
   SHEET_NAME: 'Amazon_Products',
-  WEBHOOK_URL: 'https://hook.integromat.com/tu-webhook-url', // Reemplazar con tu webhook de Make.com
+  WEBHOOK_URL: 'https://hook.eu2.make.com/p6v3c95jn9sogebq45gweqovpnvjge5h', // Reemplazar con tu webhook de Make.com
   COLUMNS: {
     TIMESTAMP: 0,    // A
     PRODUCT_URL: 1,  // B

@@ -1,0 +1,46 @@
+# Core dependencies
+requests==2.32.4
+beautifulsoup4==4.13.4
+flask==3.1.0
+flask-cors==5.0.0
+
+# OpenAI and AI
+openai==1.58.1
+
+# Google APIs
+google-auth==2.36.0
+google-auth-oauthlib==1.2.1
+# Core web framework
+flask==3.0.3
+
+# HTTP requests and web scraping
+requests==2.31.0
+beautifulsoup4==4.12.3
+lxml==5.2.2
+
+# OpenAI for article generation
+openai==1.51.0
+
+# Google APIs for Sheets integration  
+google-auth==2.29.0
+google-auth-oauthlib==1.2.0
+google-auth-httplib2==0.2.0
+google-api-python-client==2.131.0
+gspread==6.1.2
+
+# Data processing
+pandas==2.2.2
+numpy==1.26.4
+
+# WordPress integration
+python-wordpress-xmlrpc==2.3
+
+# Utilities
+python-dotenv==1.0.1
+validators==0.28.1
+
+# Web scraping (lighter alternatives)
+selenium==4.15.0
+
+# Security and encoding
+urllib3==2.1.0
