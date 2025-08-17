@@ -7,32 +7,6 @@
       "maxDuration": 300
     }
   },
-  "routes": [
-    {
-      "src": "/api/generate-article",
-      "dest": "/api/generate-article.py"
-    },
-    {
-      "src": "/api/scrape-amazon",
-      "dest": "/api/scrape-amazon.py"
-    },
-    {
-      "src": "/api/webhook",
-      "dest": "/api/webhook.py"
-    },
-    {
-      "src": "/api/health",
-      "dest": "/api/health.py"
-    },
-    {
-      "src": "/api/docs",
-      "dest": "/api/docs.py"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/api/index.py"
-    }
-  ],
   "env": {
     "OPENAI_API_KEY": "@openai_api_key",
     "OPENAI_API_BASE": "@openai_api_base",
@@ -62,6 +36,32 @@
       ]
     }
   ],
+  "routes": [
+    {
+      "src": "/api/generate-article",
+      "dest": "/api/generate-article.py"
+    },
+    {
+      "src": "/api/scrape-amazon",
+      "dest": "/api/scrape-amazon.py"
+    },
+    {
+      "src": "/api/webhook",
+      "dest": "/api/webhook.py"
+    },
+    {
+      "src": "/api/health",
+      "dest": "/api/health.py"
+    },
+    {
+      "src": "/api/docs",
+      "dest": "/api/docs.py"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/api/index.py"
+    }
+  ],
   "rewrites": [
     {
       "source": "/docs",
@@ -69,5 +69,3 @@
     }
   ]
 }
-
-
