@@ -1,15 +1,12 @@
 {
   "version": 2,
   "name": "amazon-automation-project",
-  "builds": [
-    {
-      "src": "api/*.py",
-      "use": "@vercel/python",
-      "config": {
-        "maxLambdaSize": "50mb"
-      }
+  "functions": {
+    "api/*.py": {
+      "runtime": "python3.11",
+      "maxDuration": 300
     }
-  ],
+  },
   "routes": [
     {
       "src": "/api/generate-article",
@@ -46,12 +43,6 @@
     "WORDPRESS_PASSWORD": "@wordpress_password",
     "MAKE_WEBHOOK_URL": "@make_webhook_url"
   },
-  "functions": {
-    "api/*.py": {
-      "runtime": "python3.11",
-      "maxDuration": 300
-    }
-  },
   "headers": [
     {
       "source": "/api/(.*)",
@@ -78,4 +69,5 @@
     }
   ]
 }
+
 
