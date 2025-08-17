@@ -8,14 +8,14 @@
     }
   },
   "env": {
-    "GOOGLE_GEMINI_API_KEY": "@google_gemini_api_key",
-    "HUGGINGFACE_API_BASE": "@huggingface_api_base",
-    "GOOGLE_SHEETS_API_KEY": "@google_sheets_api_key",
-    "GOOGLE_SERVICE_ACCOUNT_EMAIL": "@google_service_account_email",
-    "WORDPRESS_API_URL": "@wordpress_api_url",
-    "WORDPRESS_USERNAME": "@wordpress_username",
-    "WORDPRESS_PASSWORD": "@wordpress_password",
-    "MAKE_WEBHOOK_URL": "@make_webhook_url"
+    "GOOGLE_GEMINI_API_KEY": "google_gemini_api_key",
+    "HUGGINGFACE_API_BASE": "huggingface_api_base",
+    "GOOGLE_SHEETS_API_KEY": "google_sheets_api_key",
+    "GOOGLE_SERVICE_ACCOUNT_EMAIL": "google_service_account_email",
+    "WORDPRESS_API_URL": "wordpress_api_url",
+    "WORDPRESS_USERNAME": "wordpress_username",
+    "WORDPRESS_PASSWORD": "wordpress_password",
+    "MAKE_WEBHOOK_URL": "make_webhook_url"
   },
   "headers": [
     {
