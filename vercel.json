@@ -26,6 +26,10 @@
   ],
   "rewrites": [
     {
+      "source": "/api/generate-article-free",
+      "destination": "/api/generate-article-free.py"
+    },
+    {
       "source": "/api/generate-article",
       "destination": "/api/generate-article.py"
     },
