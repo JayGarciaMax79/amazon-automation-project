@@ -25,6 +25,8 @@ async def generate_article_free(request: Request):
 
         # ... el resto de tu código sigue igual ...
 
+        # ... el resto de tu código sigue igual ...
+
 
         # Paso 1: Scrapear la información del producto de Amazon
         scrape_api_url = os.environ.get("SCRAPE_API_URL")
