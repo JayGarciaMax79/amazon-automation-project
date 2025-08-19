@@ -10,7 +10,7 @@ import google.generativeai as genai
 # Configurar la clave de API de Gemini
 genai.configure(api_key=os.environ.get("GEMINI_API_KEY"))
 
-app = FastAPI()
+app = FastAPI() # <-- ¡Mueve esta línea aquí!
 
 @app.post("/api/generate-article-free")
 async def generate_article_free(request: Request):
@@ -22,6 +22,9 @@ async def generate_article_free(request: Request):
 
         if not product_url or not affiliate_link:
             raise HTTPException(status_code=400, detail="product_url and affiliate_link are required")
+
+        # ... el resto de tu código sigue igual ...
+
 
         # Paso 1: Scrapear la información del producto de Amazon
         scrape_api_url = os.environ.get("SCRAPE_API_URL")
